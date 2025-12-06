@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AP Digital - Professional Website Design & Development</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-dark: #000000;
+      --secondary-dark: #1a1a1a;
+      --accent-blue: #0066ff;
+      --accent-blue-light: #3399ff;
+      --accent-blue-dark: #0052cc;
+      --text-light: #ffffff;
+      --text-muted: #b0b0b0;
+      --text-gray: #808080;
+      --border-light: #333333;
+      --success: #00cc66;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+      color: var(--text-light);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Navigation */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.98);
+      backdrop-filter: blur(10px);
+      padding: 1rem 0;
+      z-index: 1000;
+      border-bottom: 1px solid var(--border-light);
+      box-shadow: 0 4px 30px rgba(0, 102, 255, 0.1);
+    }
+
+    nav {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      cursor: pointer;
+      animation: slideInLeft 0.8s ease-out;
+    }
+
+    .logo-icon {
+      width: 45px;
+      height: 45px;
+      background: url('https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/780052f9-0479-42d5-a05a-2b525284907f');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0, 102, 255, 0.2);
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .logo-text h1 {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .logo-text p {
+      font-size: 0.65rem;
+      color: var(--accent-blue);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      position: relative;
+      transition: color 0.3s ease;
+      font-weight: 500;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent-blue) 0%, var(--accent-blue-light) 100%);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-blue-light);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .btn-cta {
+      background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-blue-light) 100%);
+      color: var(--text-light);
+      border: none;
+      padding: 0.75rem 1.75rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(0, 102, 255, 0.3);
+      animation: slideInRight 0.8s ease-out;
+      font-size: 0.9rem;
+    }
+
+    .btn-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(0, 102, 255, 0.5);
+    }
+
+    .btn-cta:active {
+      transform: translateY(-1px);
+    }
+
+    /* Hero Section */
+    .hero {
+      margin-top: 70px;
+      min-height: 100vh;
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(26, 26, 26, 0.95) 100%),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="%230066ff" stroke-width="0.5" opacity="0.08"/></pattern></defs><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -15%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0, 102, 255, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -20%;
+      left: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(0, 102, 255, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: float 10s ease-in-out infinite reverse;
+    }
+
+    .hero-content {
+      max-width: 1000px;
+      text-align: center;
+      z-index: 10;
+      padding: 0 2rem;
+    }
+
+    .hero-label {
+      font-size: 0.95rem;
+      color: var(--accent-blue);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      animation: fadeInUp 1s ease-out;
+      font-weight: 600;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 8vw, 4.8rem);
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 1s ease-out 0.2s both;
+      letter-spacing: -1px;
+      font-weight: 800;
+    }
+
+    .hero h1 .highlight {
+      color: var(--accent-blue);
+      text-shadow: 0 0 40px rgba(0, 102, 255, 0.3);
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 700px;
+      margin: 0 auto 2.5rem;
+      animation: fadeInUp 1s ease-out 0.4s both;
+      line-height: 1.8;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeInUp 1s ease-out 0.6s both;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-blue-light) 100%);
+      color: var(--text-light);
+      padding: 1.1rem 3rem;
+      border: none;
+      border-radius: 6px;
+      font-weight: 700;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0, 102, 255, 0.4);
+      font-size: 1rem;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 40px rgba(0, 102, 255, 0.6);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-light);
+      padding: 1.1rem 3rem;
+      border: 2px solid var(--accent-blue);
+      border-radius: 6px;
+      font-weight: 700;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+    }
+
+    .btn-secondary:hover {
+      background: var(--accent-blue);
+      color: var(--text-light);
+      transform: translateY(-4px);
+    }
+
+    /* Sections */
+    section {
+      padding: 6rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-label {
+      color: var(--accent-blue);
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+
+    .section-title {
+      font-size: 2.8rem;
+      margin-bottom: 1.5rem;
+      letter-spacing: -1px;
+      font-weight: 800;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Services Section */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+
+    .service-card {
+      background: linear-gradient(135deg, rgba(0, 102, 255, 0.05) 0%, rgba(0, 102, 255, 0.02) 100%);
+      border: 1px solid rgba(0, 102, 255, 0.2);
+      padding: 2.5rem;
+      border-radius: 8px;
+      text-align: center;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--accent-blue);
+      background: linear-gradient(135deg, rgba(0, 102, 255, 0.1) 0%, rgba(0, 102, 255, 0.05) 100%);
+      box-shadow: 0 15px 40px rgba(0, 102, 255, 0.15);
+    }
+
+    .service-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .service-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--accent-blue);
+    }
+
+    .service-card p {
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* Pricing Section */
+    .pricing-section {
+      background: linear-gradient(135deg, rgba(0, 102, 255, 0.02) 0%, rgba(0, 102, 255, 0.05) 100%);
+      border-radius: 8px;
+      padding: 6rem 2rem;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .pricing-card {
+      background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+      border: 2px solid var(--border-light);
+      padding: 2.5rem;
+      border-radius: 8px;
+      text-align: center;
+      transition: all 0.3s ease;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .pricing-card:nth-child(2) {
+      border-color: var(--accent-blue);
+      transform: scale(1.05);
+      box-shadow: 0 20px 50px rgba(0, 102, 255, 0.2);
+    }
+
+    .pricing-card:hover {
+      border-color: var(--accent-blue);
+      transform: translateY(-8px);
+    }
+
+    .pricing-card:nth-child(2):hover {
+      transform: scale(1.05) translateY(-8px);
+    }
+
+    .pricing-badge {
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent-blue);
+      color: var(--text-light);
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: none;
+    }
+
+    .pricing-card:nth-child(2) .pricing-badge {
+      display: block;
+    }
+
+    .pricing-tier {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .pricing-price {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin: 1rem 0;
+      color: var(--accent-blue);
+    }
+
+    .pricing-price small {
+      font-size: 1rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .pricing-description {
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      flex-grow: 1;
+    }
+
+    .pricing-features {
+      text-align: left;
+      margin: 2rem 0;
+      border-top: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+      padding: 2rem 0;
+    }
+
+    .pricing-features li {
+      list-style: none;
+      margin: 0.75rem 0;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      font-size: 0.95rem;
+    }
+
+    .pricing-features li::before {
+      content: '✓';
+      color: var(--accent-blue);
+      font-weight: 700;
+      margin-right: 0.75rem;
+      font-size: 1.1rem;
+    }
+
+    .pricing-features li.disabled {
+      opacity: 0.4;
+    }
+
+    .pricing-features li.disabled::before {
+      content: '✗';
+      color: var(--text-gray);
+    }
+
+    .btn-pricing {
+      background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-blue-light) 100%);
+      color: var(--text-light);
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 6px;
+      font-weight: 700;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px rgba(0, 102, 255, 0.3);
+      font-size: 0.95rem;
+    }
+
+    .btn-pricing:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(0, 102, 255, 0.5);
+    }
+
+    .pricing-card:nth-child(1) .btn-pricing,
+    .pricing-card:nth-child(3) .btn-pricing {
+      background: transparent;
+      border: 2px solid var(--accent-blue);
+      color: var(--accent-blue);
+    }
+
+    /* Contact Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(5px);
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    .modal.show {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+      border: 1px solid rgba(0, 102, 255, 0.3);
+      border-radius: 8px;
+      padding: 2.5rem;
+      max-width: 500px;
+      width: 95%;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+      animation: slideUp 0.4s ease-out;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-close {
+      float: right;
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: color 0.3s ease;
+      line-height: 1;
+    }
+
+    .modal-close:hover {
+      color: var(--accent-blue);
+    }
+
+    .modal-title {
+      font-size: 1.5rem;
+      color: var(--accent-blue);
+      margin-bottom: 1.5rem;
+      clear: both;
+      font-weight: 700;
+    }
+
+    .modal-section {
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-label {
+      color: var(--accent-blue);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .modal-input,
+    .modal-textarea {
+      width: 100%;
+      padding: 0.75rem;
+      background: rgba(0, 102, 255, 0.05);
+      border: 1px solid rgba(0, 102, 255, 0.2);
+      border-radius: 6px;
+      color: var(--text-light);
+      font-family: inherit;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      resize: vertical;
+    }
+
+    .modal-textarea {
+      min-height: 100px;
+    }
+
+    .modal-input::placeholder,
+    .modal-textarea::placeholder {
+      color: var(--text-gray);
+    }
+
+    .modal-input:focus,
+    .modal-textarea:focus {
+      outline: none;
+      border-color: var(--accent-blue);
+      background: rgba(0, 102, 255, 0.08);
+      box-shadow: 0 0 15px rgba(0, 102, 255, 0.2);
+    }
+
+    .modal-contact-info {
+      background: rgba(0, 102, 255, 0.08);
+      border: 1px solid rgba(0, 102, 255, 0.2);
+      padding: 1.5rem;
+      border-radius: 6px;
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-contact-info p {
+      margin: 0.5rem 0;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .modal-contact-info strong {
+      color: var(--accent-blue);
+    }
+
+    .modal-button-group {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .modal-btn-send {
+      flex: 1;
+      background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-blue-light) 100%);
+      color: var(--text-light);
+      padding: 0.9rem;
+      border: none;
+      border-radius: 6px;
+      font-weight: 700;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    .modal-btn-send:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0, 102, 255, 0.4);
+    }
+
+    .modal-btn-cancel {
+      flex: 1;
+      background: transparent;
+      color: var(--accent-blue);
+      padding: 0.9rem;
+      border: 2px solid var(--accent-blue);
+      border-radius: 6px;
+      font-weight: 700;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    .modal-btn-cancel:hover {
+      background: var(--accent-blue);
+      color: var(--text-light);
+    }
+
+    .success-message {
+      background: rgba(0, 204, 102, 0.2);
+      border: 1px solid var(--success);
+      color: var(--success);
+      padding: 1rem;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+      text-align: center;
+      display: none;
+    }
+
+    .success-message.show {
+      display: block;
+      animation: slideUp 0.4s ease-out;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* Why Choose Us */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+
+    .why-card {
+      background: rgba(0, 102, 255, 0.03);
+      border: 1px solid rgba(0, 102, 255, 0.15);
+      padding: 2rem;
+      border-radius: 8px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .why-card:hover {
+      background: rgba(0, 102, 255, 0.08);
+      border-color: var(--accent-blue);
+    }
+
+    .why-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.75rem;
+      color: var(--accent-blue);
+    }
+
+    .why-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    footer {
+      background: #000000;
+      border-top: 1px solid var(--border-light);
+      padding: 3rem 2rem;
+    }
+
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-section {
+      text-align: left;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-logo-icon {
+      width: 35px;
+      height: 35px;
+      background: url('https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/780052f9-0479-42d5-a05a-2b525284907f');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .footer-section h4 {
+      color: var(--accent-blue);
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .footer-section p,
+    .footer-section a {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.8;
+      text-decoration: none;
+      display: block;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+      color: var(--accent-blue);
+    }
+
+    .footer-divider {
+      border-top: 1px solid var(--border-light);
+      padding-top: 2rem;
+      text-align: center;
+      color: var(--text-gray);
+      font-size: 0.9rem;
+    }
+
+    /* Logo in Footer */
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 2rem;
+    }
+
+    /* Animations */
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(40px);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav {
+        padding: 0 1rem;
+      }
+
+      .nav-links {
+        gap: 1.5rem;
+        font-size: 0.85rem;
+      }
+
+      .nav-links a {
+        display: none;
+      }
+
+      .btn-cta {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.8rem;
+      }
+
+      .logo-text h1 {
+        font-size: 0.85rem;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        width: 100%;
+      }
+
+      section {
+        padding: 4rem 1rem;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .pricing-card:nth-child(2) {
+        transform: scale(1);
+      }
+
+      .pricing-card:nth-child(2):hover {
+        transform: translateY(-8px);
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+
+      .pricing-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <header>
+    <nav>
+      <div class="logo-container">
+        <div class="logo-icon"></div>
+        <div class="logo-text">
+          <h1>AP Digital</h1>
+          <p>Web Design</p>
+        </div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#why">Why Us</a></li>
+      </ul>
+      <button class="btn-cta" onclick="document.getElementById('pricing').scrollIntoView({behavior: 'smooth'})">
+        Get Started
+      </button>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-label">Welcome to AP Digital</p>
+      <h1>Professional Websites Made <span class="highlight">Simple & Affordable</span></h1>
+      <p>High-profile, low-cost, low-maintenance web solutions for businesses that want to grow online. Built with cutting-edge technology and designed for results.</p>
+      
+      <div class="hero-buttons">
+        <button class="btn-primary" onclick="document.getElementById('pricing').scrollIntoView({behavior: 'smooth'})">
+          View Pricing
+        </button>
+        <button class="btn-secondary" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})">
+          Learn More
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services">
+    <div class="section-header">
+      <p class="section-label">What We Offer</p>
+      <h2 class="section-title">Professional Web Solutions</h2>
+      <p class="section-subtitle">Tailored websites designed to make your business stand out online</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🎨</div>
+        <h3>Custom Design</h3>
+        <p>Stunning, modern designs that reflect your brand identity and engage your audience with professional aesthetics.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">⚡</div>
+        <h3>Lightning Fast</h3>
+        <p>Optimized performance and blazing-fast load times that keep visitors engaged and improve search rankings.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📱</div>
+        <h3>Mobile Ready</h3>
+        <p>Fully responsive designs that work flawlessly on smartphones, tablets, and desktops across all devices.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔒</div>
+        <h3>Secure & Safe</h3>
+        <p>Enterprise-grade security, SSL encryption, and regular maintenance to protect your website and data.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🚀</div>
+        <h3>SEO Optimized</h3>
+        <p>Built with search engine optimization in mind to help your business get found online by your target customers.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💬</div>
+        <h3>24/7 Support</h3>
+        <p>Dedicated support team ready to help with updates, questions, and maintenance whenever you need it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="pricing-section">
+    <div class="section-header">
+      <p class="section-label">Simple Pricing</p>
+      <h2 class="section-title">Affordable Web Design Plans</h2>
+      <p class="section-subtitle">Professional websites at every budget level. Choose the plan that fits your needs.</p>
+    </div>
+
+    <div class="pricing-grid">
+      <!-- Basic Site -->
+      <div class="pricing-card">
+        <div class="pricing-badge">Popular</div>
+        <div class="pricing-tier">Basic Site</div>
+        <div class="pricing-price">$450</div>
+        <p class="pricing-description">Perfect for getting started online</p>
+        <ul class="pricing-features">
+          <li>5-8 Pages</li>
+          <li>Mobile Responsive</li>
+          <li>Contact Form</li>
+          <li>SSL Security</li>
+          <li>Basic SEO Setup</li>
+          <li class="disabled">Advanced Analytics</li>
+          <li class="disabled">E-Commerce Ready</li>
+          <li class="disabled">Custom Integrations</li>
+        </ul>
+        <button class="btn-pricing" onclick="openContactModal('Basic Site - $450')">Get Started</button>
+      </div>
+
+      <!-- Premium Site -->
+      <div class="pricing-card">
+        <div class="pricing-badge">Most Popular</div>
+        <div class="pricing-tier">Premium Site</div>
+        <div class="pricing-price">$650</div>
+        <p class="pricing-description">Ideal for growing businesses</p>
+        <ul class="pricing-features">
+          <li>15-20 Pages</li>
+          <li>Mobile Responsive</li>
+          <li>Advanced Forms</li>
+          <li>SSL Security</li>
+          <li>Full SEO Optimization</li>
+          <li>Advanced Analytics</li>
+          <li>Blog Platform</li>
+          <li class="disabled">E-Commerce Features</li>
+        </ul>
+        <button class="btn-pricing" onclick="openContactModal('Premium Site - $650')">Get Started</button>
+      </div>
+
+      <!-- Enterprise Site -->
+      <div class="pricing-card">
+        <div class="pricing-badge">Best Value</div>
+        <div class="pricing-tier">Enterprise</div>
+        <div class="pricing-price">$1,000</div>
+        <p class="pricing-description">Comprehensive solution for scale</p>
+        <ul class="pricing-features">
+          <li>Unlimited Pages</li>
+          <li>Mobile Responsive</li>
+          <li>Advanced Forms</li>
+          <li>SSL Security</li>
+          <li>Expert SEO Strategy</li>
+          <li>Advanced Analytics & CRM</li>
+          <li>E-Commerce Capabilities</li>
+          <li>Custom Integrations</li>
+        </ul>
+        <button class="btn-pricing" onclick="openContactModal('Enterprise - $1,000')">Get Started</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Plan Details Section -->
+  <section style="padding: 4rem 2rem;">
+    <div class="section-header">
+      <p class="section-label">What Each Plan Includes</p>
+      <h2 class="section-title">Detailed Feature Breakdown</h2>
+    </div>
+
+    <div style="max-width: 1200px; margin: 3rem auto 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+      <div style="background: rgba(0, 102, 255, 0.05); border: 1px solid rgba(0, 102, 255, 0.2); padding: 2rem; border-radius: 8px;">
+        <h3 style="color: var(--accent-blue); font-size: 1.3rem; margin-bottom: 1rem;">Basic Site - $300</h3>
+        <p style="color: var(--text-muted); line-height: 1.8;">Perfect for startups and small businesses establishing their online presence. Includes essential features like multi-page website, mobile responsiveness, contact forms, SSL security, and basic SEO setup to get you indexed and discoverable on search engines.</p>
+      </div>
+
+      <div style="background: rgba(0, 102, 255, 0.08); border: 2px solid var(--accent-blue); padding: 2rem; border-radius: 8px;">
+        <h3 style="color: var(--accent-blue); font-size: 1.3rem; margin-bottom: 1rem;">Premium Site - $700</h3>
+        <p style="color: var(--text-muted); line-height: 1.8;">Ideal for established businesses. Expands to 15-20 pages with advanced contact forms, full SEO optimization, blog platform for content marketing, and advanced analytics to track visitor behavior and conversion metrics in detail.</p>
+      </div>
+
+      <div style="background: rgba(0, 102, 255, 0.05); border: 1px solid rgba(0, 102, 255, 0.2); padding: 2rem; border-radius: 8px;">
+        <h3 style="color: var(--accent-blue); font-size: 1.3rem; margin-bottom: 1rem;">Enterprise - $1,200</h3>
+        <p style="color: var(--text-muted); line-height: 1.8;">Complete solution for scaling businesses. Unlimited pages, e-commerce capabilities for online sales, custom integrations with your existing tools, CRM integration for customer management, and expert SEO strategy to dominate your market.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us Section -->
+  <section id="why">
+    <div class="section-header">
+      <p class="section-label">Why Choose AP Digital</p>
+      <h2 class="section-title">Built for Success</h2>
+      <p class="section-subtitle">We combine affordability with professional quality</p>
+    </div>
+
+    <div class="why-grid">
+      <div class="why-card">
+        <h3>💰 Low Cost</h3>
+        <p>Professional-quality websites without breaking the bank. Transparent pricing with no hidden fees or surprise costs.</p>
+      </div>
+      <div class="why-card">
+        <h3>🛠️ Low Maintenance</h3>
+        <p>Fully managed hosting, security updates, and backups included. Focus on your business while we handle the technical side.</p>
+      </div>
+      <div class="why-card">
+        <h3>⭐ High Profile</h3>
+        <p>Modern, stunning designs that establish your business as professional and trustworthy in your industry.</p>
+      </div>
+      <div class="why-card">
+        <h3>⚙️ AI-Powered</h3>
+        <p>Built with advanced AI technology (Perplexity AI) for intelligent content optimization and data-driven insights.</p>
+      </div>
+      <div class="why-card">
+        <h3>🚀 Scalable</h3>
+        <p>Start small and grow with us. Upgrade your plan anytime as your business expands and needs evolve.</p>
+      </div>
+      <div class="why-card">
+        <h3>📊 Results-Driven</h3>
+        <p>Every website is optimized for conversions with clear CTAs, fast loading, and SEO best practices built-in.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Modal -->
+  <div id="contactModal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeContactModal()">&times;</span>
+      
+      <h2 class="modal-title">Get Started</h2>
+      
+      <div id="successAlert" class="success-message">
+        ✓ Message sent successfully! We'll be in touch shortly.
+      </div>
+
+      <form id="contactForm" onsubmit="handleFormSubmit(event)">
+        <div class="modal-section">
+          <div class="modal-label">Selected Plan</div>
+          <div style="color: var(--accent-blue); font-size: 1.1rem; font-weight: 600;" id="selectedPlan">Premium Site - $650</div>
+        </div>
+
+        <div class="modal-section">
+          <label class="modal-label">Your Message</label>
+          <textarea class="modal-textarea" id="messageBody" readonly></textarea>
+        </div>
+
+        <div class="modal-section">
+          <label class="modal-label">Additional Details</label>
+          <textarea class="modal-textarea" id="details" placeholder="Tell us more about your project needs..."></textarea>
+        </div>
+
+        <div class="modal-section">
+          <label class="modal-label">Your Name *</label>
+          <input type="text" class="modal-input" id="clientName" placeholder="Full name" required>
+        </div>
+
+        <div class="modal-contact-info">
+          <p><strong>Contact Information:</strong></p>
+          <p>📞 Phone: <strong>0431347029</strong></p>
+          <p>👥 Founders: <strong>Abel George Pradeep</strong> & <strong>Peter Sam</strong></p>
+          <p style="font-size: 0.85rem; margin-top: 1rem; color: var(--text-gray);">Fill in your name above and we'll respond to your inquiry shortly.</p>
+        </div>
+
+        <div class="modal-button-group">
+          <button type="submit" class="modal-btn-send">Send Message</button>
+          <button type="button" class="modal-btn-cancel" onclick="closeContactModal()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-logo">
+        <div class="footer-logo-icon"></div>
+        <div style="line-height: 1.2;">
+          <strong style="font-size: 1rem;">AP Digital</strong><br>
+          <span style="font-size: 0.8rem; color: var(--accent-blue);">Web Design & Development</span>
+        </div>
+      </div>
+      <div class="footer-logo" style="opacity: 0.5;">
+        <div class="footer-logo-icon"></div>
+      </div>
+    </div>
+
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Services</h4>
+        <a href="#services">Web Design</a>
+        <a href="#services">E-Commerce</a>
+        <a href="#services">SEO Optimization</a>
+        <a href="#services">Maintenance & Support</a>
+      </div>
+      <div class="footer-section">
+        <h4>Solutions</h4>
+        <a href="#pricing">Basic Site</a>
+        <a href="#pricing">Premium Site</a>
+        <a href="#pricing">Enterprise</a>
+      </div>
+      <div class="footer-section">
+        <h4>Company</h4>
+        <a href="#why">Why AP Digital</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Contact Us</a>
+      </div>
+      <div class="footer-section">
+        <h4>Get in Touch</h4>
+        <p>Ready to build your online presence?</p>
+        <button class="btn-cta" style="margin-top: 1rem; width: 100%;">Start Your Project</button>
+      </div>
+    </div>
+
+    <div class="footer-divider">
+      <p>&copy; 2025 AP Digital. All rights reserved. Professional web design and development by Abel & Peter.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Contact Modal Functions
+    function openContactModal(planName) {
+      document.getElementById('contactModal').classList.add('show');
+      document.getElementById('selectedPlan').textContent = planName;
+      
+      // Generate message based on selected plan
+      const messageText = `Hi AP Digital,\n\nI would like to look into your ${planName} plan.\n\n`;
+      document.getElementById('messageBody').value = messageText;
+      document.getElementById('details').value = '';
+      document.getElementById('clientName').value = '';
+      document.getElementById('successAlert').classList.remove('show');
+    }
+
+    function closeContactModal() {
+      document.getElementById('contactModal').classList.remove('show');
+    }
+
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      
+      const plan = document.getElementById('selectedPlan').textContent;
+      const messageBody = document.getElementById('messageBody').value;
+      const details = document.getElementById('details').value;
+      const clientName = document.getElementById('clientName').value;
+      
+      // Construct the full message
+      const fullMessage = `${messageBody}\n${details}\n\nRegards,\n${clientName}`;
+      
+      // Create mailto link
+      const emailBody = encodeURIComponent(fullMessage);
+      const mailtoLink = `mailto:apdigitalweb@example.com?subject=Inquiry for ${plan}&body=${emailBody}`;
+      
+      // Log for demonstration (in production, send via backend)
+      console.log('Form Data:', {
+        plan: plan,
+        name: clientName,
+        details: details,
+        fullMessage: fullMessage
+      });
+      
+      // Show success message
+      const successAlert = document.getElementById('successAlert');
+      successAlert.classList.add('show');
+      
+      // Optionally open email client (comment out if you prefer backend email)
+      // window.location.href = mailtoLink;
+      
+      // Reset form after 2 seconds
+      setTimeout(() => {
+        closeContactModal();
+      }, 2000);
+    }
+
+    // Close modal when clicking outside
+    document.getElementById('contactModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeContactModal();
+      }
+    });
+
+    // Smooth scroll navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Add animation to cards on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.service-card, .pricing-card, .why-card').forEach(el => {
+      el.style.opacity = '0';
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
